@@ -1,0 +1,128 @@
+#description: Zombie v2
+#author: Abdulkadir Omar
+
+Clear-host
+
+#zombie game - starter version
+#declare variables
+
+$name = Read-host "Enter your survivor name"
+$health = 100
+$supplies = 1
+$weapon = "Flashlight"
+$walkerhealth = 100
+
+#intro
+
+write-host ""
+Write-host "Welcome," $name
+write-host " You wake up in an abandoned building"
+Write-host "You health is:" $health
+Write-host "You have" $supplies "supply."
+Write-host "Your only weapon is a"$weapon
+
+#first choice
+
+Write-host "You hear scratching at the door"
+Write-host "Do you 1 open the door or 2 barricade"
+
+$choice = Read-host "Choose 1 or 2"
+
+#if/else
+
+If($choice -eq "1")
+{
+    Write-host "`nYou open the door and see a zombie!"
+    write-host "You slam the door, but you get scratched."
+    $health = $health - 25
+}
+elseif($choice -eq "2")
+{
+    write-host "`nYou push a desk in front the door."
+    write-host "The zombie cannot get in."
+    $supplies = $supplies + 1
+}
+else
+{
+    Write-host "You took to long to decide. Try again."
+}
+
+#status Check
+Write-host "Current Status:"
+write-host "Health:" $health
+Write-host "Supplies:" $supplies
+
+#second choice
+
+"You find a hallway with two paths."
+"to the lft is a cafeteria, right is a security office"
+$choice = read-host "Choose L for left, or R for right."
+
+#if/else Direction
+
+if($choice -eq "L")
+{
+    write-host "You find canned food in a cafeteria."
+    $supplies = $supplies +2
+}
+elseif($choice -eq "R")
+{
+    Write-host "`nYou find a baseball bat in the office."
+    $weapon = "baseball bat"
+}
+else
+{
+    write-host "Took to long to decide. Try again!"
+}
+
+#Status Check
+"Status Check"
+Write-host "Health:" $health
+write-host "Supplies:" $supplies
+Write-host "Weapon:" $weapon
+
+#encounter
+Write-host "A Zombie Blocks The Exit"
+
+
+If($weapon -eq "Baseball Bat")
+{
+    Write-host "You Use The Baseball Bat To Fight Your Way Out!"
+    $choice = Read-host "Do You Attack The Zombie? Y or N"
+
+    if($choice -eq "Y")
+    {
+        $walkerhealth = $walkerhealth -25
+        Write-host "You Hit The Zombie!"
+     }
+     else
+     {
+        "You Hesitate and The Zombie Gets Closer!"
+      }
+
+ Write-host "`nThe Zombie Falls To The Ground."
+ "You Survived!"
+}
+ Else
+{
+    "You Only Have a Flashlight."
+    "You Fight Zombie With Flashlight"
+    "You Escape, But You Get Injured."
+    $health = $health -40
+ }
+
+#Status Check
+"Status Check:"
+Write-host "Health:" $health
+Write-host "Supplies:" $supplies
+Write-host "Weapon:" $weapon
+
+#Survival Check
+If($health -gt 0)
+{
+    "You Survived! But Barely."
+}
+Else
+{
+    "You Did Not Survive."
+}
