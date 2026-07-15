@@ -1,5 +1,3 @@
-# PowerShell-Zombie-Game
-Powershell Zombie Game
 # PowerShell Zombie Survival Game
 
 ## Description
